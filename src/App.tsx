@@ -161,7 +161,7 @@ const App = () => {
     }
   };
 
-  const isWithinTolerance = (lat1, lon1, lat2, lon2, tolerance = 5) => {
+  const isWithinTolerance = (lat1, lon1, lat2, lon2, tolerance = 30) => {
     const point1 = turf.point([lon1, lat1]); 
     const point2 = turf.point([lon2, lat2]);
     return turf.distance(point1, point2, { units: 'meters' }) <= tolerance;
