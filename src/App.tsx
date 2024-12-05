@@ -40,14 +40,9 @@ const App = () => {
   const [historicalData, setHistoricalData] = useState({
     labels: [],
     datasets: [
-      { label: 'device_name', data: [], borderColor: 'rgb(255, 99, 132)', backgroundColor: 'rgb(255, 99, 132)', tension: 0.4, fill: false },
-      { label: 'lat', data: [], borderColor: 'rgb(75, 192, 192)', backgroundColor: 'rgb(75, 192, 192)', tension: 0.4, fill: false },
-      { label: 'lng', data: [], borderColor: 'rgb(255, 205, 86)', backgroundColor: 'rgb(255, 205, 86)', tension: 0.4, fill: false },
       { label: 'x', data: [], borderColor: 'rgb(54, 162, 235)', backgroundColor: 'rgb(54, 162, 235)', tension: 0.4, fill: false },
       { label: 'y', data: [], borderColor: 'rgb(153, 102, 255)', backgroundColor: 'rgb(153, 102, 255)', tension: 0.4, fill: false },
       { label: 'press', data: [], borderColor: 'rgb(255, 205, 86)', backgroundColor: 'rgb(255, 205, 86)', tension: 0.4, fill: false },
-      { label: 'water_level', data: [], borderColor: 'rgb(54, 162, 235)', backgroundColor: 'rgb(54, 162, 235)', tension: 0.4, fill: false },
-      { label: 'rain', data: [], borderColor: 'rgb(153, 102, 255)', backgroundColor: 'rgb(153, 102, 255)', tension: 0.4, fill: false },
       { label: 'batt', data: [], borderColor: 'rgb(75, 192, 192)', backgroundColor: 'rgb(75, 192, 192)', tension: 0.4, fill: false }
     ]
   });
@@ -103,14 +98,9 @@ const App = () => {
 
   useEffect(() => {
     const filtered = airQualityData.filter(row => 
-      row.device_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      row.lat.toString().includes(searchQuery) ||
-      row.lng.toString().includes(searchQuery) ||
       row.x.toString().includes(searchQuery) ||
       row.y.toString().includes(searchQuery) ||
       row.press.toString().includes(searchQuery) ||
-      row.water_level.toString().includes(searchQuery) ||
-      row.rain.toString().includes(searchQuery) ||
       row.batt.toString().includes(searchQuery)
     );
     setFilteredData(filtered);
@@ -300,8 +290,6 @@ const App = () => {
                       <TableHead onClick={() => handleSort('x')}>X</TableHead>
                       <TableHead onClick={() => handleSort('y')}>Y</TableHead>
                       <TableHead onClick={() => handleSort('press')}>Pressure</TableHead>
-                      <TableHead onClick={() => handleSort('water_level')}>Water Level</TableHead>
-                      <TableHead onClick={() => handleSort('rain')}>Rain</TableHead>
                       <TableHead onClick={() => handleSort('batt')}>Battery</TableHead>
                     </TableRow>
                   </TableHeader>
@@ -322,8 +310,6 @@ const App = () => {
                         <TableCell>{row.x}</TableCell>
                         <TableCell>{row.y}</TableCell>
                         <TableCell>{row.press}</TableCell>
-                        <TableCell>{row.water_level}</TableCell>
-                        <TableCell>{row.rain}</TableCell>
                         <TableCell>{row.batt}</TableCell>
                       </TableRow>
                     ))}
